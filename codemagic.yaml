@@ -6,6 +6,10 @@ workflows:
       node: 20
 
     scripts:
+      - name: Disable LFS
+        script: |
+          git lfs install --skip-smudge
+
       - name: Install dependencies
         script: npm ci
 
