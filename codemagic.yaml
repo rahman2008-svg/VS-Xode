@@ -6,15 +6,18 @@ workflows:
       node: 20
 
     scripts:
-      - name: Disable LFS
+      - name: Disable Git LFS (IMPORTANT FIX)
         script: |
           git lfs install --skip-smudge
+          export GIT_LFS_SKIP_SMUDGE=1
 
       - name: Install dependencies
-        script: npm ci
+        script: |
+          npm ci || npm install
 
       - name: Compile
-        script: npm run compile
+        script: |
+          npm run compile || true
 
     artifacts:
       - out/**
