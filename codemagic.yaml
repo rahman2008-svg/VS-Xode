@@ -1,0 +1,16 @@
+workflows:
+  vs_xode:
+    name: VS-Xode
+
+    environment:
+      node: 20
+
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+
+      - name: Compile
+        script: npm run compile
+
+    artifacts:
+      - out/**
